@@ -238,6 +238,12 @@ abstract class RequestsTest_Transport_Base extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(array('test' => 'true', 'test2' => 'test'), $result['args']);
 	}
 
+	public function testPURGE() {
+		$request = Requests::request('http://httpbin.org/', array(), $this->getOptions(), Requests::PURGE);
+		// http://httpbin.org/ expects GET, so I check default verb GET isn't sent
+		$this->assertEquals(405, $request->status_code);
+	}
+
 	public function testRedirects() {
 		$request = Requests::get('http://httpbin.org/redirect/6', array(), $this->getOptions());
 		$this->assertEquals(200, $request->status_code);

@@ -63,6 +63,13 @@ class Requests {
 	const PATCH = 'PATCH';
 
 	/**
+	 * PURGE method (Varnish specific)
+	 *
+	 * @var string
+	 */
+	const PURGE = 'PURGE';
+
+	/**
 	 * Current version of Requests
 	 *
 	 * @var string

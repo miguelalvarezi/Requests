@@ -243,7 +243,8 @@ class Requests_Transport_cURL implements Requests_Transport {
 				curl_setopt($this->fp, CURLOPT_POSTFIELDS, $data);
 				break;
 			case Requests::DELETE:
-				curl_setopt($this->fp, CURLOPT_CUSTOMREQUEST, 'DELETE');
+			case Requests::PURGE:
+				curl_setopt($this->fp, CURLOPT_CUSTOMREQUEST, $options['type']);
 				break;
 			case Requests::HEAD:
 				curl_setopt($this->fp, CURLOPT_NOBODY, true);
